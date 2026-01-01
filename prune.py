@@ -35,6 +35,8 @@ if __name__ == '__main__':
     }
 
     for f in sorted(f_list, key=lambda x : x[0], reverse=True):
+        if f[1].stat().st_size == 0:
+            continue
         dt = datetime.datetime.fromtimestamp(f[0])
         if len(keep['days']) < args.days:
             day = dt.strftime("%Y%j")
